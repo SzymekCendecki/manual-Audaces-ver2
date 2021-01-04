@@ -1,3 +1,27 @@
 header{
-  text-align: center;
+  height: 10%;
+  border: 1px solid #000;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+nav{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  height: 10%;
+  border: 1px solid #000;
+}
+
+#mainButtons{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
 }
