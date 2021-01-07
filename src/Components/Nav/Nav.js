@@ -3,6 +3,22 @@ import MainButtons from './MainButtons'
 import Races from './Races'
 import Weapon from './Weapon'
 
+const mainBtnPL = {
+  "language":"EN",
+  "races":"rasy",
+  "weapon":"broń",
+  "magic":"magia",
+  "legends":"legendy"
+}
+
+const mainBtnEN ={
+  "language":"PL",
+  "races":"races",
+  "weapon":"weapon",
+  "magic":"magic",
+  "legends":"legends"
+}
+
 const racesPLtxt= {
   "human":"człowiek",
   "halforc":"półork",
@@ -31,7 +47,7 @@ const racesENtxt = {
   "semigiant":"semigiant"
 }
 
-export const weaponPltxt = {
+const weaponPltxt = {
   "short":"krótka",
   "oneHand":"jednoręczna",
   "handAndHalf":"półtoraręczna",
@@ -42,7 +58,7 @@ export const weaponPltxt = {
   "magic":"magiczna"
 }
 
-export const weaponENtxt ={
+ const weaponENtxt ={
   "short":"short",
   "oneHand":"one hand",
   "handAndHalf":"hand and half",
@@ -59,19 +75,49 @@ export class Nav extends PureComponent {
     super(props);
 
     this.state = { 
+      mainBtns: mainBtnPL,
       races: racesPLtxt,
-      weapon: weaponPltxt
-    };
-
-    
+      weapon: weaponPltxt,
+      raceVisible: false,
+      weaponVisible: false
+    };    
   }
+
+  changeLang(){
+    if(this.state.mainBtns === mainBtnPL){
+        this.setState({
+          mainBtns: mainBtnEN,
+          races: racesENtxt
+        })     
+    }else{
+      this.setState({
+        mainBtns: mainBtnPL,
+        races: racesPLtxt
+      })   
+    }
+  }
+
+  showRaces(){
+    if(this.state.raceVisible === false){
+      this.setState({ 
+        raceVisible: true
+      });
+    }else{
+      this.setState({ 
+        raceVisible: false
+      });
+    }
+  }
+
+
+
   render() {
     return (
       <>
         <nav>
-          <MainButtons />
-          <Races btnName={this.state.races}/>
-          <Weapon btnName={this.state.weapon} />
+          <MainButtons btnName={this.state.mainBtns} changeLang={this.changeLang.bind(this)} raceVisible={this.showRaces.bind(this)}/>
+          {this.state.raceVisible && <Races btnName={this.state.races}/>}
+          {this.state.weaponVisible && <Weapon btnName={this.state.weapon}/>}
         </nav>        
       </>
     )

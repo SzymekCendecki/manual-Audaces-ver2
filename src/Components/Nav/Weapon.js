@@ -4,7 +4,7 @@ import Button from './Button'
 export class Weapon extends PureComponent {
   render() {
     return (
-      <div>
+      <div id='weapon'>
         <Button name={this.props.btnName.short}/>
         <Button name={this.props.btnName.oneHand}/>
         <Button name={this.props.btnName.handAndHalf}/>

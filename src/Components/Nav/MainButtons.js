@@ -5,11 +5,11 @@ export class MainButtons extends PureComponent {
   render() {
     return (
       <div id='mainButtons'>
-        <Button name='en'/>
-        <Button name='rasy' />
-        <Button name='broń' />
-        <Button name='magia' />
-        <Button name='legendy' />
+        <Button name={this.props.btnName.language} btnClick={this.props.changeLang}/>
+        <Button name={this.props.btnName.races} btnClick={this.props.raceVisible}/>
+        <Button name={this.props.btnName.weapon}/>
+        <Button name={this.props.btnName.magic}/>
+        <Button name={this.props.btnName.legends}/>
       </div>
     )
   }
