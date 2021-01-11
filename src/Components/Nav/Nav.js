@@ -1,74 +1,10 @@
 import React, { PureComponent } from 'react'
 import MainButtons from './MainButtons'
+import {mainBtnPL, mainBtnEN} from './mainBtnTxt'
 import Races from './Races'
+import {racesPLtxt, racesENtxt} from './racesBtnTxt.js'
 import Weapon from './Weapon'
-
-const mainBtnPL = {
-  "language":"EN",
-  "races":"rasy",
-  "weapon":"broń",
-  "magic":"magia",
-  "legends":"legendy"
-}
-
-const mainBtnEN ={
-  "language":"PL",
-  "races":"races",
-  "weapon":"weapon",
-  "magic":"magic",
-  "legends":"legends"
-}
-
-const racesPLtxt= {
-  "human":"człowiek",
-  "halforc":"półork",
-  "orc":"ork",
-  "halfelv":"półelf",
-  "elv":"elf",
-  "dwarf":"krasnolud",
-  "gnome":"gnom",
-  "halfling":"niziołek",
-  "goblin":"goblin",
-  "troll":"trol",
-  "semigiant":"półolbrzym"
-}
-
-const racesENtxt = {
-  "human":"human",
-  "halforc":"halforc",
-  "orc":"orc",
-  "halfelv":"halfelv",
-  "elv":"elv",
-  "dwarf":"dwarf",
-  "gnome":"gnome",
-  "halfling":"halfling",
-  "goblin":"goblin",
-  "troll":"troll",
-  "semigiant":"semigiant"
-}
-
-const weaponPltxt = {
-  "short":"krótka",
-  "oneHand":"jednoręczna",
-  "handAndHalf":"półtoraręczna",
-  "twoHand":"dwuręczna",
-  "distance":"dystansowa",
-  "siege":"oblężnicza",
-  "special":"specjalna",
-  "magic":"magiczna"
-}
-
- const weaponENtxt ={
-  "short":"short",
-  "oneHand":"one hand",
-  "handAndHalf":"hand and half",
-  "twoHand":"two hand",
-  "distance":"distance",
-  "siege":"siege",
-  "special":"special",
-  "magic":"magic"
-}
-
+import {weaponPltxt, weaponENtxt} from './weaponBtnTxt'
 
 export class Nav extends PureComponent {
   constructor(props) {
@@ -98,6 +34,12 @@ export class Nav extends PureComponent {
   }
 
   showRaces(){
+    if(this.state.weaponVisible === true){
+      this.setState({ 
+        weaponVisible: false
+      });
+    }
+    
     if(this.state.raceVisible === false){
       this.setState({ 
         raceVisible: true
@@ -109,13 +51,30 @@ export class Nav extends PureComponent {
     }
   }
 
+  showWeapon(){
+    if(this.state.raceVisible === true){
+      this.setState({ 
+        raceVisible: false
+      });
+    }
+    if(this.state.weaponVisible === false){
+      this.setState({ 
+        weaponVisible: true
+      });
+    }else{
+      this.setState({ 
+        weaponVisible: false
+      });
+    }
+  }
+
 
 
   render() {
     return (
       <>
         <nav>
-          <MainButtons btnName={this.state.mainBtns} changeLang={this.changeLang.bind(this)} raceVisible={this.showRaces.bind(this)}/>
+          <MainButtons btnName={this.state.mainBtns} changeLang={this.changeLang.bind(this)} raceVisible={this.showRaces.bind(this)} weaponVisible={this.showWeapon.bind(this)}/>
           {this.state.raceVisible && <Races btnName={this.state.races}/>}
           {this.state.weaponVisible && <Weapon btnName={this.state.weapon}/>}
         </nav>        

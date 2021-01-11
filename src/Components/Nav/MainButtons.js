@@ -7,7 +7,7 @@ export class MainButtons extends PureComponent {
       <div id='mainButtons'>
         <Button name={this.props.btnName.language} btnClick={this.props.changeLang}/>
         <Button name={this.props.btnName.races} btnClick={this.props.raceVisible}/>
-        <Button name={this.props.btnName.weapon}/>
+        <Button name={this.props.btnName.weapon} btnClick={this.props.weaponVisible}/>
         <Button name={this.props.btnName.magic}/>
         <Button name={this.props.btnName.legends}/>
       </div>
