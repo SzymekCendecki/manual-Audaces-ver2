@@ -23,12 +23,14 @@ export class Nav extends PureComponent {
     if(this.state.mainBtns === mainBtnPL){
         this.setState({
           mainBtns: mainBtnEN,
-          races: racesENtxt
+          races: racesENtxt,
+          weapon: weaponENtxt
         })     
     }else{
       this.setState({
         mainBtns: mainBtnPL,
-        races: racesPLtxt
+        races: racesPLtxt,
+        weapon: weaponPltxt
       })   
     }
   }
@@ -67,8 +69,6 @@ export class Nav extends PureComponent {
       });
     }
   }
-
-
 
   render() {
     return (
